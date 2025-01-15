@@ -18,6 +18,9 @@ const SubscribedUserPosts = () => {
         .then((result) => {
           // console.log(result)
           setData(result.posts);
+        })
+        .catch((err)=>{
+          console.log(err);
         });
     }
   }, []);
@@ -122,6 +125,9 @@ const SubscribedUserPosts = () => {
           return item._id !== result._id;
         });
         setData(newData);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   };
 
@@ -143,6 +149,9 @@ const SubscribedUserPosts = () => {
           }
         });
         setData(newData);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   };
   

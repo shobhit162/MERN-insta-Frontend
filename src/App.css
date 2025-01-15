@@ -53,3 +53,32 @@ a{
 .material-icons:hover{
   cursor: pointer;
 }
+
+@media only screen and (max-width: 610px) {
+  .sidenav-trigger {
+    display: block;
+  }
+  #nav-mobile {
+    display: none;
+  }
+  .sidenav .modal-trigger {
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+
+  .sidenav .btn {
+    margin-left: 30px;
+  }
+
+  .sidenav li {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 611px) {
+  .sidenav-trigger {
+    display: none;
+  }
+}
+

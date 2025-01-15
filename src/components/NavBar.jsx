@@ -8,6 +8,7 @@ import Loader from "./Loader";
 
 const NavBar = () => {
   const searchModal = useRef(null);
+  const sidenav = useRef(null);
   const [search, setSearch] = useState("");
   const [userDetails, setUserDetails] = useState([]);
   const { state, dispatch } = useContext(UserContext);
@@ -18,6 +19,7 @@ const NavBar = () => {
 
   useEffect(() => {
     M.Modal.init(searchModal.current);
+    M.Sidenav.init(sidenav.current);
   }, []);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ const NavBar = () => {
         <li key="1">
           <i
             data-target="modal1"
-            className="large material-icons modal-trigger"
+            className="material-icons modal-trigger"
             style={{ color: "black" }}
           >
             search
@@ -101,23 +103,37 @@ const NavBar = () => {
       .then((results) => {
         loader.stop();
         setUserDetails(results.user);
+      })
+      .catch((err) => {
+        loader.stop();
+        console.log(err);
       });
   };
 
   return (
-    <nav>
-      <div className="nav-wrapper white">
-        <Link
-          to={state ? "/" : "/login"}
-          style={{ marginLeft: "10px" }}
-          className="brand-logo left"
-        >
-          Instagram
-        </Link>
-        <ul id="nav-mobile" className="right">
-          {renderList()}
-        </ul>
-      </div>
+    <>
+      <nav>
+        <div className="nav-wrapper white">
+          <Link
+            to={state ? "/" : "/login"}
+            style={{ marginLeft: "10px" }}
+            className="brand-logo left"
+          >
+            Instagram
+          </Link>
+          <a href="#" data-target="mobile-demo" className="sidenav-trigger right">
+            <i className="material-icons">menu</i>
+          </a>
+          <ul id="nav-mobile" className="right">
+            {renderList()}
+          </ul>
+        </div>
+      </nav>
+
+      <ul className="sidenav" id="mobile-demo" ref={sidenav}>
+        {renderList()}
+      </ul>
+
       {isAuthenticated() && (
         <div
           id="modal1"
@@ -167,7 +183,7 @@ const NavBar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 

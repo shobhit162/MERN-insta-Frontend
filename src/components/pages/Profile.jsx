@@ -19,6 +19,9 @@ const Profile = () => {
       .then((res) => res.json())
       .then((result) => {
         setPics(result.mypost);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   }, []);
 
@@ -57,6 +60,10 @@ const Profile = () => {
               );
               dispatch({ type: "UPDATEPIC", payload: result.pic });
               // window.location.reload()
+            })
+            .catch((err)=>{
+              loader.stop();
+              console.log(err);
             });
         })
         .catch((err) => {

@@ -25,6 +25,9 @@ const Profile = () => {
         // console.log(result)
 
         setProfile(result);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   }, []);
 
@@ -59,6 +62,10 @@ const Profile = () => {
           };
         });
         setShowFollow(false);
+      })
+      .catch((err)=>{
+        loader.stop();
+        console.log(err);
       });
   };
 
@@ -96,6 +103,10 @@ const Profile = () => {
           };
         });
         setShowFollow(true);
+      })
+      .catch((err)=>{
+        loader.stop();
+        console.log(err);
       });
   };
 

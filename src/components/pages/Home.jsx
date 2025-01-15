@@ -19,6 +19,9 @@ const Home = () => {
         .then((result) => {
           //  console.log(result)
           setData(result.posts);
+        })
+        .catch((err)=>{
+          console.log(err);
         });
     }
   }, []);
@@ -126,6 +129,9 @@ const Home = () => {
         });
         setData(newData);
         }
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   };
 
@@ -147,6 +153,9 @@ const Home = () => {
           }
         });
         setData(newData);
+      })
+      .catch((err)=>{
+        console.log(err);
       });
   };
   return (!isAuthenticated() ? <Navigate to="/login" replace /> :
