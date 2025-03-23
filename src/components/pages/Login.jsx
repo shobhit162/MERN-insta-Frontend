@@ -37,6 +37,7 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         if (data.error) {
+          loader.stop();
           M.toast({ html: data.error, classes: "#9e2020 red darken-3" });
         } else {
           localStorage.setItem("jwt", data.token);
@@ -89,6 +90,22 @@ const Login = () => {
         <h6>
           <Link to="/password/forgot">Forgot Password?</Link>
         </h6>
+        <div
+          style={{
+            marginTop: "20px",
+            padding: "10px",
+            backgroundColor: "#e8f5e9",
+            borderRadius: "4px",
+            color: "#2e7d32", 
+            textAlign: "center",
+          }}
+        >
+          <p style={{ margin: "0", fontWeight: "bold" }}>
+            For quick login, here is the sample id and password:
+          </p>
+          <p style={{ margin: "0" }}>Id - ramesh@gmail.com</p>
+          <p style={{ margin: "0" }}>Password - 1234</p>
+        </div>
       </div>
     </div>
   );
